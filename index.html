@@ -1,0 +1,125 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>target shooting</title>
+		<style>
+		header{
+		  background-color: #99ffbb;
+		  height: 100px;
+		  text-align: center;
+		}
+		h1{
+		  padding-top: 20px;
+		}
+		footer{
+		  background-color: #99ffbb;
+		  text-align: center;
+		}
+		nav{
+		  background-color: #aaaa55;
+		}
+		img{
+		  height:200px;
+		}
+		#result{
+		  font-size: 15px;
+		}
+		p{
+		  font-size: 25px;
+		  color: green;
+		  font-weight: bold;
+		}
+		</style>
+	</head>
+
+	<body>
+	  <header><h1>target shooting</h1></header>
+	  
+	  <section>
+	    <article>
+		<br><br>
+		<p id ="result"></p>
+		<br><br>
+		<img src="images/1.png" >
+		<img src="images/isari2.png" > <br><br>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<button id = "start" onclick="Start();">დაწყება</button>
+		 &nbsp;&nbsp;&nbsp;
+		<button id = "stop"  onclick="Stop();">გაჩერება</button> <br><br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<button id = "reset"  onclick="javascript:location.reload();" >გადათამაშება</button> <br><br>
+		
+		<script>
+		  var pictures = [ "1.png"
+						  ,"2.png"
+						  ,"3.png"
+						  ,"4.png"
+						  ,"5.png"
+						  ,"6.png"
+						  ,"7.png"
+						  ,"8.png"
+						 ];
+			var isrebi = [ "isari1.png"
+						  ,"isari2.png"
+						  ,"isari3.png"
+						  ,"isari4.png"
+						  ,"isari5.png"
+						  ,"isari6.png"
+						  ,"isari7.png"
+						  ,"isari8.png"
+						 ];		 
+		  let i = 0;
+		  let tread;
+		  let R;
+
+		  function triali(){
+			i++;
+			if(i > 8){
+			  i = 0;
+			}
+			else{
+			  document.images[0].src = "images/" + pictures[i-1]; //"images/" + i + ".png";
+			}
+		  }
+		  function Start(){
+		    i = 0;
+		    //document.getElementById("result").innerHTML = "შედეგი";
+			
+			   R = Math.floor(8 * Math.random()); 
+			   document.images[1].src = "images/" + isrebi[R];
+			   let R_s = Math.floor(500 * Math.random()); 
+		    tread = setInterval(triali, R_s);
+			
+			//console.log(document.getElementById("start").disabled);
+			document.getElementById("start").disabled = true;
+		  }
+		  function Stop(){
+		    if(document.getElementById("start").disabled == 1){
+		    document.getElementById("stop").disabled = true;
+			
+			clearInterval(tread);
+			//console.log(document.getElementById("start").disabled);
+			console.log(i);
+			console.log(R);
+			if(i == (R+1)){
+			  document.getElementById("result").style.color = "green";
+			  document.getElementById("result").innerHTML = "არის, თქვენ მოარტყით მიზანში!";
+			}
+			else{
+			  document.getElementById("result").style.color = "red";
+			  document.getElementById("result").innerHTML = "თქვენ ვერ მოარტყით მიზანში!";
+			}
+		  }
+		  }
+		  </script><br><br>
+		  <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		  <button onclick="Start();">Start</button>
+		  &nbsp;&nbsp;&nbsp;<button  onclick="Stop();">Stop</button><br><br>-->
+		  
+		</article>
+	  </section>
+	  <footer>ყველა უფლება დაცულია &copy; 2023</footer>
+	</body>
+</html>
